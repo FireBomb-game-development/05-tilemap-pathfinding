@@ -11,11 +11,14 @@ public class Patroller: TargetMover {
 
     protected override void Start()  {
         base.Start();
+       
         pointCount = patrolPath.transform.childCount;
         currentPointIndex = 0;
+        
     }
 
     private void Update() {
+        transform.eulerAngles = Vector3.zero;
         if (atTarget) {
             currentPointIndex = (currentPointIndex + 1) % pointCount;
         }

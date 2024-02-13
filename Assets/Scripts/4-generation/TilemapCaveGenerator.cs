@@ -10,7 +10,8 @@ using System.Collections;
  * Since: 2020-12
  */
 
-public class TilemapCaveGenerator: MonoBehaviour {
+public class TilemapCaveGenerator : MonoBehaviour
+{
     [SerializeField] Tilemap tilemap = null;
 
     [Tooltip("The tile that represents a wall (an impassable block)")]
@@ -33,25 +34,39 @@ public class TilemapCaveGenerator: MonoBehaviour {
     [SerializeField] float pauseTime = 1f;
 
     private CaveGenerator caveGenerator;
+    private Spawner spawner;
+    private bool mapDone;
 
-    void Start()  {
+    void Start()
+    {
+        mapDone = false;
+        spawner = GetComponent<Spawner>();
         //To get the same random numbers each time we run the script
         Random.InitState(100);
 
         caveGenerator = new CaveGenerator(randomFillPercent, gridSize);
         caveGenerator.RandomizeMap();
-                
+
         //For testing that init is working
         GenerateAndDisplayTexture(caveGenerator.GetMap());
-            
+
         //Start the simulation
         StartCoroutine(SimulateCavePattern());
+      
+        Debug.Log("spawning player");
+        if (mapDone)
+        {
+            spawner.spawnPlayer();
+        }
+
     }
 
 
     //Do the simulation in a coroutine so we can pause and see what's going on
-    private IEnumerator SimulateCavePattern()  {
-        for (int i = 0; i < simulationSteps; i++)   {
+    private IEnumerator SimulateCavePattern()
+    {
+        for (int i = 0; i < simulationSteps; i++)
+        {
             yield return new WaitForSeconds(pauseTime);
 
             //Calculate the new values
@@ -60,6 +75,7 @@ public class TilemapCaveGenerator: MonoBehaviour {
             //Generate texture and display it on the plane
             GenerateAndDisplayTexture(caveGenerator.GetMap());
         }
+        mapDone = true;
         Debug.Log("Simulation completed!");
     }
 
@@ -67,13 +83,17 @@ public class TilemapCaveGenerator: MonoBehaviour {
 
     //Generate a black or white texture depending on if the pixel is cave or wall
     //Display the texture on a plane
-    private void GenerateAndDisplayTexture(int[,] data) {
-        for (int y = 0; y < gridSize; y++) {
-            for (int x = 0; x < gridSize; x++) {
+    private void GenerateAndDisplayTexture(int[,] data)
+    {
+        for (int y = 0; y < gridSize; y++)
+        {
+            for (int x = 0; x < gridSize; x++)
+            {
                 var position = new Vector3Int(x, y, 0);
-                var tile = data[x, y] == 1 ? wallTile: floorTile;
+                var tile = data[x, y] == 1 ? wallTile : floorTile;
                 tilemap.SetTile(position, tile);
             }
         }
     }
+ 
 }

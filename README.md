@@ -31,7 +31,7 @@ In this repository, we are focusing on honing our skills in 2D tilemap design an
 ## External Resources
 
 - **Cycle State Machine**: For handling the cycle states of NPCs, we utilize the Cycle State Machine available on [itch.io](https://unitime.itch.io/cyclestatemachin).
-- **Cave Generator**: To aid in map generation, we make use of the Cave Generator tool available on [itch.io](https://itch.io/game/edit/2527763).
+- **Cave Generator**: To aid in map generation, we make use of the Cave Generator tool available on [itch.io](https://unitime.itch.io/cavegeneratorspwnercheck).
 
 ## How to Use
 

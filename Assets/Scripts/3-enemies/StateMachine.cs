@@ -16,7 +16,7 @@ public class StateMachine: MonoBehaviour {
 
     private List<State>      states      = new List<State>();
     private List<Transition> transitions = new List<Transition>();
-
+    public static bool isStanding = true;
     private State activeState = null;
 
     public void GoToState(State newActiveState) {
@@ -48,6 +48,9 @@ public class StateMachine: MonoBehaviour {
         foreach (Transition transition in transitions) {
             if (transition.Item1==activeState) {
                 if (transition.Item2()==true) {
+              
+                        transform.eulerAngles = Vector3.zero;
+                
                     GoToState(transition.Item3);
                     break;
                 }

@@ -50,22 +50,24 @@ public class Sleep : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculate the target angle
-        float targetAngle = angle + 90f;
 
-        // Rotate until the current angle is less than the target angle
-        if (angle < targetAngle)
-        {
-            transform.Rotate(angularVelocity * Time.deltaTime);
-            angle += direction * Time.deltaTime;
-            Debug.Log("Rotating to sleep, angle: " + angle);
-        }
+        transform.eulerAngles = new Vector3(0, 0, 90);
+        //// Calculate the target angle
+        //float targetAngle = angle + 90f;
 
-        // Ensure the angle is exactly 90 degrees
-        if (angle >= targetAngle)
-        {
-            angle = targetAngle;
-        }
+        //// Rotate until the current angle is less than the target angle
+        //if (angle > targetAngle)
+        //{
+        //    transform.Rotate(angularVelocity * Time.deltaTime);
+        //    angle += direction * Time.deltaTime;
+        //    Debug.Log("Rotating to sleep, angle: " + angle);
+        //}
+
+        //// Ensure the angle is exactly 90 degrees
+        //if (angle >= targetAngle)
+        //{
+        //    angle = targetAngle;
+        //}
     }
 
 }

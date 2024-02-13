@@ -17,6 +17,7 @@ public class EnemyControllerStateMachine: StateMachine {
     private Patroller patroller;
     private Rotator rotator;
     private Sleep sleep;
+    
 
     private float DistanceToTarget() {
         return Vector3.Distance(transform.position, chaser.TargetObjectPosition());
@@ -48,5 +49,6 @@ public class EnemyControllerStateMachine: StateMachine {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusToWatch);
     }
+
 }
  

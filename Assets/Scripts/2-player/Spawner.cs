@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.PlayerSettings;
+
 
 
 //[RequireComponent(typeof(AllowedTiles))]
@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 {
 
   
-    private TilemapCaveGenerator tileMapCaveGenerator;
+    //private TilemapCaveGenerator tileMapCaveGenerator;
     [SerializeField] int gridSize;
     [SerializeField] Tilemap tilemap;
     [SerializeField] AllowedTiles allowedTiles = null;
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        tileMapCaveGenerator = GetComponent<TilemapCaveGenerator>();
+        //tileMapCaveGenerator = GetComponent<TilemapCaveGenerator>();
      
         //tilemap = tileMapCaveGenerator.GetComponent<Tilemap>();
     }
@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
         int attempts = gridSize * gridSize;
         bool valid = false;
         int reachedCells = 0;
-        List<TileBase> foundedPositions;
+        
         
         Debug.Log("generating random position");
         int x = Random.Range(0, gridSize);
